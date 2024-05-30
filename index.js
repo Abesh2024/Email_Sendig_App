@@ -137,6 +137,6 @@ app.post('/send-email', async(req, res) => {
 
 // module.exports = sendEmail;
 
-app.listen(3000, () => {
-  console.log("Port is running at 3000");
+app.listen(10000, () => {
+  console.log("Port is running at 10000");
 })
