@@ -25,13 +25,13 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-async function sendEmail(to, subject) {
+async function sendEmail(to, subject,mess) {
 
   const payload = {
     from: "abeshmernstack@gmail.com",
     to,
     subject,
-    html: `<h1>hello there</h1>`
+    html: `<h1>hello there <p>${mess}</p></h1>`  
   }
 
   transporter.sendMail(payload, (err, data) => {
@@ -39,11 +39,9 @@ async function sendEmail(to, subject) {
     if (err) {
       console.log(err)
     } else {
-      console.log("Email is sent to ", to)
+      console.log("Email is sent to ", to);
     }
-
   })
-
 }
 
 app.get("/", (req, res) => {
@@ -126,7 +124,6 @@ app.get("/", (req, res) => {
       </div>
   </body>
   </html>
-  
   `)
 })
 
@@ -134,7 +131,7 @@ app.post('/send-email', async(req, res) => {
   await sendEmail(req.body.email, req.body.subject, req.body.message)
    console.log("test1");
  
-   res.send({ email: "Email sent !" })
+   res.send(`<h1>Emai; sent</h1>`)
  
  })
 
